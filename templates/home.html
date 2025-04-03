@@ -1,0 +1,107 @@
+<html>
+    <body>
+        <div class="login">
+            <h1>FWI Prediction</h1>
+
+            <!--Main Input for receiving Query to our ML-->
+            <form action="{{ url_for('predict_data')}}" method="post">
+                <input type="text" name="Temperature" placeholder="Temperature" required="required" />
+                <input type="text" name="RH" placeholder="RH" required="required" />
+                <input type="text" name="Ws" placeholder="Ws" required="required" />
+                <input type="text" name="Rain" placeholder="Rain" required="required" />
+                <input type="text" name="FFMC" placeholder="FFMC" required="required" />
+                <input type="text" name="DMC" placeholder="DMC" required="required" />
+                <input type="text" name="ISI" placeholder="ISI" required="required" />
+                <input type="text" name="Classes" placeholder="Classes" required="required" />
+                <input type="text" name="Region" placeholder="Region" required="required" />
+                
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+            </form>
+            <h2>
+                The FWI value is: {{ results }}
+
+            </h2>
+        </div>
+    </body>
+</html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Remove scrollbar */
+        }
+        
+        .login {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh; /* Limit height */
+            overflow-y: auto; /* Allow scrolling within container if needed */
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px; /* Reduced margin */
+            font-size: clamp(20px, 3vw, 28px); /* Slightly smaller */
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px; /* Slightly reduced padding */
+            margin: 6px 0; /* Reduced margin */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: clamp(12px, 1.8vw, 14px);
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #a1c4fd;
+            box-shadow: 0 0 5px rgba(161, 196, 253, 0.5);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 10px; /* Slightly reduced padding */
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: clamp(14px, 1.8vw, 16px);
+            margin-top: 15px; /* Reduced margin */
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #45a049;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 15px; /* Reduced margin */
+            padding: 12px; /* Slightly reduced padding */
+            background: rgba(161, 196, 253, 0.2);
+            border-radius: 5px;
+            font-size: clamp(16px, 2.5vw, 20px); /* Slightly smaller */
+        }
+    </style>
+</head>
+
+
